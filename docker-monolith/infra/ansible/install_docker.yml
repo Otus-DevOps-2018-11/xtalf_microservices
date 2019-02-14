@@ -1,0 +1,45 @@
+---
+
+- name: Install Docker CE
+  hosts: all
+  become: true
+
+  tasks:
+
+    - name: Install python for Ansible
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+      changed_when: False
+    
+    - name: Install packages to allow apt to use a repository over HTTPS
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+        name: "{{ item }}"
+      loop:
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - software-properties-common
+        - python-pip
+
+    - name: Install python package
+      pip:
+        name: docker
+
+    - name: Add Docker apt key.
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
+        state: present
+
+    - name: Added Docker repository
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
+        state: present
+        update_cache: yes
+
+    - name: Install docker packages
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+        name: docker-ce

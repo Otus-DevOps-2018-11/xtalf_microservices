@@ -1,0 +1,13 @@
+plugin: gcp_compute
+projects:
+  - docker-228612
+filters:
+auth_kind: serviceaccount
+service_account_file: /vagrant/docker/docker-228612-87db22285272.json
+keyed_groups:
+  - prefix: tag
+    key: tags['items']
+hostnames:
+  - name
+compose:
+  ansible_host: networkInterfaces[0].accessConfigs[0].natIP
