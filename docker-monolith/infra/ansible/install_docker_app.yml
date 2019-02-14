@@ -1,0 +1,17 @@
+---
+
+- name: Install Docker app
+  hosts: all
+  become: true
+
+  tasks:
+    - name: pull an image
+      docker_image:
+        name: xtalf/otus-reddit:1.0
+
+    - name: Start container
+      docker_container:
+        name: reddit
+        image: xtalf/otus-reddit:1.0
+        ports:
+          - "9292:9292"

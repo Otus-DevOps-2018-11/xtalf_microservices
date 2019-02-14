@@ -1,1 +1,6 @@
 xtalf_microservices.code-workspace
+docker-228612-87db22285272.json
+docker-monolith/infra/packer/variables.json
+docker-monolith/infra/terraform/terraform.tfvars
+docker-monolith/infra/terraform/.terraform/
+terraform.tfstate*
