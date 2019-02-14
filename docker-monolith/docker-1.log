@@ -1,0 +1,8 @@
+REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
+xtalf/ubuntu-tmp-file   latest              0476eb03d059        13 seconds ago      117MB
+hello-world             latest              fce289e99eb9        10 days ago         1.84kB
+ubuntu                  16.04               b0ef3016420a        13 days ago         117MB
+
+Докер образ это сохраненное состояние контейнера, а контейнер - это инстанс запущенный из образа.
+Inspect контейнера содержит "Image", указывающий на образ, из которого конейнер был запущен.
+Inspect образа содержит "Parent", указывающий образ из которого был сделан данный образ, путем добавления слоев.
