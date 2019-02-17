@@ -1,0 +1,17 @@
+FROM alpine:3.9
+
+# Update and install base packages
+RUN apk update && apk upgrade \
+&& apk add curl wget bash \
+&& apk add curl-dev ruby-dev build-base \
+&& apk add ruby ruby-io-console ruby-bundler
+
+ENV APP_HOME=/app
+ENV COMMENT_DATABASE_HOST comment_db
+ENV COMMENT_DATABASE comments
+
+WORKDIR ${APP_HOME}
+COPY . ${APP_HOME}/
+RUN bundle install
+
+CMD ["puma"]

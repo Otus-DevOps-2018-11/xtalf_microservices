@@ -1,0 +1,20 @@
+FROM alpine:3.9
+
+WORKDIR /app
+COPY * /app/
+
+#RUN apk update && apk upgrade \
+#&& apk add curl wget bash \
+#&& apk add curl-dev build-base
+
+RUN apk add --no-cache --virtual .build-deps g++ python3-dev libffi-dev openssl-dev && \
+    apk add --no-cache --update python3 && \
+    pip3 install --upgrade pip setuptools
+#RUN pip3 install pendulum service_identity
+
+RUN pip install --upgrade pip && pip install -r /app/requirements.txt
+
+ENV POST_DATABASE_HOST=post_db
+ENV POST_DATABASE=posts
+
+CMD ["python3", "post_app.py"]
