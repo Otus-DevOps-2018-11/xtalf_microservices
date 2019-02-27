@@ -24,3 +24,12 @@ xtalf microservices repository
    docker run -d --network=reddit --network-alias=new_comment -e COMMENT_DATABASE_HOST=new_comment_db xtalf/comment:1.0
    docker run -d --network=reddit -p 9292:9292 -e POST_SERVICE_HOST=new_post -e COMMENT_SERVICE_HOST=new_comment xtalf/ui:1.0
 2. Собраны образы comment,post, ui на основе образа Alpine Linux
+
+# HW 15
+
+Рассмотрены разные виды поддерживаемых docker сетей. Запустили проект Reddit в одной сети bridge, и в разных сетях bridge.
+Установили docker-compose на локальную машину. Собрали образы приложения reddit с помощью docker-compose. Запустили приложение reddit с помощью docker-compose в одной сети, и в разных bridge сетях.
+
+Имя проекта по умолчанию - это базовое имя каталога проекта. Для запуска со своим префексом:
+docker-compose -p my_prefix up -d
+или установить переменную среды COMPOSE_PROJECT_NAME.
