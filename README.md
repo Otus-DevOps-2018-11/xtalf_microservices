@@ -13,7 +13,6 @@ xtalf microservices repository
  - на локальной машине инициализировано окружение для работу с облачным хостом, с помощью docker-machine в GCP был создан создан хост и на него установлен docker engine
  - были созданы Dockerfile, и скрипт start.sh для запуска приложения. С помощью этого подготовлен образ нашим приложением и образ выгружен в Docker Hub
 
-
 # HW 14
 
  - [ ] Основное ДЗ
@@ -37,3 +36,13 @@ docker-compose -p my_prefix up -d
 # HW 16
 
 В процессе работы была подготовлена инсталляция Gitlab CI. Подготовлен репозиторий с кодом приложения. Был описан пайплайн. И были определены различные окружения.
+
+# HW 17
+https://hub.docker.com/u/xtalf
+
+git clone https://github.com/percona/mongodb_exporter.git
+cd mongodb_exporter/
+make docker
+mongodb-exporter:master
+export MONGODB_URI='mongodb://localhost:27017'
+ http://:9216/metrics
