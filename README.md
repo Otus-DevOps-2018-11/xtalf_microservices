@@ -38,12 +38,10 @@ docker-compose -p my_prefix up -d
 В процессе работы была подготовлена инсталляция Gitlab CI. Подготовлен репозиторий с кодом приложения. Был описан пайплайн. И были определены различные окружения.
 
 # HW 17
-https://hub.docker.com/u/xtalf
 
-git clone https://github.com/percona/mongodb_exporter.git
-cd mongodb_exporter/
-make docker
-mongodb-exporter:master
-export MONGODB_URI='mongodb://localhost:27017'
- http://:9216/metrics
- 
+ - Prometheus: запуск, конфигурация, знакомство с Web UI
+ - Мониторинг состояния микросервисов
+ - Сбор метрик хоста с использованием экспортера
+
+Ссылка на Docker Hub
+https://hub.docker.com/u/xtalf
