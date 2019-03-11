@@ -62,6 +62,16 @@ services:
     networks:
       - back_net
 
+  blackbox_exporter:
+    image: blackbox:latest
+    networks:
+      - front_net
+      - back_net
+    ports:
+      - '9115:9115'
+#    command:
+#      - '--config.file=/etc/blackbox_exporter/config.yml'
+
 volumes:
   post_db:
   prometheus_data:
