@@ -5,3 +5,4 @@ docker-monolith/infra/terraform/terraform.tfvars
 docker-monolith/infra/terraform/.terraform/
 terraform.tfstate*
 src/.env
+docker/.env
