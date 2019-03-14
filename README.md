@@ -45,3 +45,12 @@ docker-compose -p my_prefix up -d
 
 Ссылка на Docker Hub
 https://hub.docker.com/u/xtalf
+
+# HW 18
+
+Количество метрик:
+Cadvisor - 3078
+Docker - 374
+telegraf - 1079
+
+docker run --rm telegraf telegraf --input-filter docker --output-filter prometheus_client  config > ../monitoring/telegraf/telegraf.conf
