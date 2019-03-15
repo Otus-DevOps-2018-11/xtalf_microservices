@@ -18,3 +18,9 @@ mongodb-exporter:
 
 blackbox-exporter:
 	cd ../monitoring/blackbox_exporter && docker build -t blackbox:latest .
+
+alertmanager:
+	cd ../monitoring/alertmanager && docker build -t $(USER_NAME)/alertmanager . && docker push $(USER_NAME)/comment
+
+telegraf:
+	cd ../monitoring/telegraf && docker build -t telegraf .
