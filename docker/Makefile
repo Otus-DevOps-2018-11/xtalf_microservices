@@ -1,4 +1,4 @@
-all: ui post-py comment prometheus mongodb-exporter
+all: ui post-py comment prometheus fluentd
 
 ui: ../src/ui/Dockerfile
 	cd ../src/ui/ && ./docker_build.sh && docker push $(USER_NAME)/ui
@@ -12,15 +12,18 @@ comment: ../src/comment/Dockerfile
 prometheus: ../monitoring/prometheus/Dockerfile ../monitoring/prometheus/prometheus.yml
 	cd ../monitoring/prometheus && docker build -t xtalf/prometheus .
 
-mongodb-exporter:
-	git clone https://github.com/percona/mongodb_exporter.git && cd mongodb_exporter/ && make docker \
-	&& cd .. && rm -rf mongodb_exporter
+fluentd: ../logging/fluentd/Dockerfile ../logging/fluentd/fluent.conf
+	cd ../logging/fluentd && docker build -t xtalf/fluentd .
 
-blackbox-exporter:
-	cd ../monitoring/blackbox_exporter && docker build -t blackbox:latest .
+#mongodb-exporter:
+#	git clone https://github.com/percona/mongodb_exporter.git && cd mongodb_exporter/ && make docker \
+#	&& cd .. && rm -rf mongodb_exporter
 
-alertmanager:
-	cd ../monitoring/alertmanager && docker build -t $(USER_NAME)/alertmanager . && docker push $(USER_NAME)/comment
+#blackbox-exporter:
+#	cd ../monitoring/blackbox_exporter && docker build -t blackbox:latest .
 
-telegraf:
-	cd ../monitoring/telegraf && docker build -t telegraf .
+#alertmanager:
+#	cd ../monitoring/alertmanager && docker build -t $(USER_NAME)/alertmanager . && docker push $(USER_NAME)/comment
+
+#telegraf:
+#	cd ../monitoring/telegraf && docker build -t telegraf .
