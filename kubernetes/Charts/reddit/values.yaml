@@ -20,5 +20,4 @@ ui:
     externalPort: 9292
 
 mongodb:
-  port: 20000
-  #usePassword: false
+  usePassword: false
