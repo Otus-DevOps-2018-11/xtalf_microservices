@@ -6,5 +6,5 @@ docker-monolith/infra/terraform/.terraform/
 terraform.tfstate*
 src/.env
 docker/.env
-kubernetes/Charts/reddit/requirements.lock
+kubernetes/Charts/*/requirements.lock
 kubernetes/Charts/reddit/charts/*.tgz
