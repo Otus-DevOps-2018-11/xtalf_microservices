@@ -1,0 +1,8 @@
+---
+service:
+  internalPort: 5000
+  externalPort: 5000
+image:
+  repository: xtalf/post
+  tag: latest
+databaseHost:
